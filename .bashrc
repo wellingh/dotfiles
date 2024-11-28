@@ -45,34 +45,34 @@ export TODO="t"
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 # Set to actual location of gitstatus directory if installed
-#export SCM_GIT_GITSTATUS_DIR="$HOME/gitstatus"
+export SCM_GIT_GITSTATUS_DIR="$HOME/git/dotfiles/gitstatus"
 # per default gitstatus uses 2 times as many threads as CPU cores, you can change this here if you must
-#export GITSTATUS_NUM_THREADS=8
+export GITSTATUS_NUM_THREADS=8
 
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
 # Will otherwise fall back on $HOSTNAME.
-#export SHORT_HOSTNAME=$(hostname -s)
+# export SHORT_HOSTNAME=$(hostname -s)
 
 # Set Xterm/screen/Tmux title with only a short username.
 # Uncomment this (or set SHORT_USER to something else),
 # Will otherwise fall back on $USER.
-#export SHORT_USER=${USER:0:8}
+# export SHORT_USER=${USER:0:8}
 
 # If your theme use command duration, uncomment this to
 # enable display of last command duration.
 #export BASH_IT_COMMAND_DURATION=true
 # You can choose the minimum time in seconds before
 # command duration is displayed.
-#export COMMAND_DURATION_MIN_SECONDS=1
+# export COMMAND_DURATION_MIN_SECONDS=1
 
 # Set Xterm/screen/Tmux title with shortened command and directory.
 # Uncomment this to set.
-#export SHORT_TERM_LINE=true
+# export SHORT_TERM_LINE=true
 
 # Set vcprompt executable path for scm advance info in prompt (demula theme)
 # https://github.com/djl/vcprompt
-#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+# export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # (Advanced): Uncomment this to make Bash-it reload itself automatically
 # after enabling or disabling aliases, plugins, and completions.
