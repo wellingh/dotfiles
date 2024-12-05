@@ -2,7 +2,8 @@
 
 if command -v apt >/dev/null 2>&1; then
     sudo apt update
-    sudo apt install stow -y
+    sudo apt install build-essential \
+        stow curl silversearcher-ag -y
 
     sudo locale-gen en_US.UTF-8
     sudo update-locale LANG=en_US.UTF-8
@@ -14,6 +15,10 @@ elif command -v dnf >/dev/null 2>&1; then
 else
     echo "Unknown package manager. Cannot determine the distribution."
     exit 1
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+    $SHELL -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 DOTFILES="$(dirname "${BASH_SOURCE[0]}")"
@@ -38,3 +43,11 @@ for item in {$DOTFILES/*,$DOTFILES/.*}; do
 done
 
 stow "$DOTFILES" -t "$HOME"
+
+source "$HOME/.bash_profile"
+
+# bash-it completions
+bashit enable completion brew
+
+# bash-it plugins
+bashit enable plugins gitstatus git-subrepo

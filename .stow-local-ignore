@@ -5,3 +5,5 @@ LICENSE
 .gitmodules
 install.sh
 bash-it
+gitstatus
+hacking.sh

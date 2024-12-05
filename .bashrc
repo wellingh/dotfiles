@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # If not running interactively, don't do anything
 
 case $- in
@@ -7,8 +5,10 @@ case $- in
     *) return;;
 esac
 
+export DOTFILES="$HOME/git/dotfiles"
+
 # Path to the bash it configuration
-export BASH_IT="$HOME/git/dotfiles/bash-it"
+export BASH_IT="$DOTFILES/bash-it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
@@ -83,3 +83,5 @@ export GITSTATUS_NUM_THREADS=8
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+
+source "$DOTFILES/hacking.sh"
