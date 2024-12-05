@@ -85,3 +85,6 @@ export GITSTATUS_NUM_THREADS=8
 source "$BASH_IT"/bash_it.sh
 
 source "$DOTFILES/hacking.sh"
+
+# Python uv
+source "$HOME/.local/bin/env"
