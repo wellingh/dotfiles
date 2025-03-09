@@ -4,3 +4,6 @@
 [submodule "gitstatus"]
 	path = gitstatus
 	url = https://github.com/romkatv/gitstatus
+[submodule "vim-code-dark"]
+	path = vim-code-dark
+	url = https://github.com/tomasiser/vim-code-dark

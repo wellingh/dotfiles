@@ -87,4 +87,11 @@ source "$BASH_IT"/bash_it.sh
 source "$DOTFILES/hacking.sh"
 
 # Python uv
-source "$HOME/.local/bin/env"
+# source "$HOME/.local/bin/env"
+
+# Nix shell
+if command -v nix-shell >/dev/null 2>&1; then
+  if [[ -n "$PS1" ]] && [[ -z "$IN_NIX_SHELL" ]]; then
+    nix-shell "$DOTFILES/shell.nix"
+  fi
+fi

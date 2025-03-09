@@ -21,6 +21,7 @@ alias fetch='git fetch origin $(grp)'
 alias pull='git pull origin $(grp)'
 alias push='git push origin $(grp)'
 alias reset='git fetch origin $(grp) && git reset origin/$(grp)'
+alias root='cd $(git rev-parse --show-toplevel)'
 
 gt() {
   git fetch --tags -q
