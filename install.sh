@@ -3,7 +3,7 @@
 if command -v apt >/dev/null 2>&1; then
     sudo apt update
     sudo apt install build-essential \
-        stow curl silversearcher-ag -y
+        stow curl silversearcher-ag wcstools -y
 
     sudo locale-gen en_US.UTF-8
     sudo update-locale LANG=en_US.UTF-8
@@ -23,7 +23,7 @@ fi
 
 DOTFILES="$(dirname "${BASH_SOURCE[0]}")"
 
-STOW_IGNORE=$(paste -sd '|' "$DOTFILES/.stow-local-ignore")
+# STOW_IGNORE=$(paste -sd '|' "$DOTFILES/.stow-local-ignore")
 
 mkdir -p ~/.bkp_dotfiles/
 
@@ -31,23 +31,36 @@ for item in {$DOTFILES/*,$DOTFILES/.*}; do
     # Skip items in the ignore list
     # shellcheck disable=SC2199
     # shellcheck disable=SC2076
-    if ! grep -qE "$STOW_IGNORE" <<< "$item" && grep ! -qE "$item" <<< ".stow-local-ignore" ; then
+    if ! grep -qE "^$(filename $item)$" .stow-local-ignore ; then
         # Process the item (file or directory)
         if [[ -f "$HOME/$item" ]] && [[ -L "$HOME/$item" ]]; then
             continue
         else
-            echo "Moving $HOME/$item to backup ~/.dotfiles"
-            echo mv "$HOME/$item" ~/.dotfiles/
+            if [[ -f "$HOME/$item" ]]; then
+                echo "Moving $HOME/$item to backup ~/.dotfiles"
+                echo mv "$HOME/$item" ~/.dotfiles/
+            fi
         fi
     fi
 done
 
 stow "$DOTFILES" -t "$HOME"
 
-source "$HOME/.bash_profile"
-
 # bash-it completions
-bashit enable completion brew
+$SHELL -i -c "bash-it enable completion brew"
 
 # bash-it plugins
-bashit enable plugins gitstatus git-subrepo
+$SHELL -i -c "bash-it enable plugins gitstatus git-subrepo"
+
+# install homebrew packages
+for pkg in tfenv terraform-docs terraform-ls uv; do
+    command -v $pkg 2>&1 || $SHELL -i -c "brew install $pkg"
+done
+
+# install python tools
+for tool in pre-commit; do
+    command -v $tool 2>&1 || $SHELL -i -c "uv tool install $tool"
+done
+
+# reload shell environment
+source "$HOME/.bash_profile"

@@ -81,17 +81,17 @@ export GITSTATUS_NUM_THREADS=8
 # Uncomment this to make Bash-it create alias reload.
 # export BASH_IT_RELOAD_LEGACY=1
 
+# OS specific settings
+OS_FAMILY="$(uname -s)"
+source "$DOTFILES/$OS_FAMILY.sh"
+
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
 
+# Misc aliases and functions
 source "$DOTFILES/hacking.sh"
 
 # Python uv
-# source "$HOME/.local/bin/env"
-
-# Nix shell
-if command -v nix-shell >/dev/null 2>&1; then
-  if [[ -n "$PS1" ]] && [[ -z "$IN_NIX_SHELL" ]]; then
-    nix-shell "$DOTFILES/shell.nix"
-  fi
+if [[ -f "$HOME/.local/bin/env" ]]; then
+  source "$HOME/.local/bin/env"
 fi
