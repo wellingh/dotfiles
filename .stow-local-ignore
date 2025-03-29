@@ -11,3 +11,4 @@ shell.nix
 Linux.sh
 Darwin.sh
 vim-code-dark
+nvm

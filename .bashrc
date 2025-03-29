@@ -95,3 +95,8 @@ source "$DOTFILES/hacking.sh"
 if [[ -f "$HOME/.local/bin/env" ]]; then
   source "$HOME/.local/bin/env"
 fi
+
+# Nvm
+if [[ -f "$DOTFILES/nvm/nvm.sh" ]]; then
+  source "$DOTFILES/nvm/nvm.sh"
+fi

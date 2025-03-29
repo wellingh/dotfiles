@@ -52,7 +52,8 @@ done
 stow "$DOTFILES" -t "$HOME"
 
 # bash-it completions
-$SHELL -i -c "bash-it enable completion defaults brew docker gcloud git kubectl"
+$SHELL -i -c "bash-it enable completion defaults \
+    brew docker gcloud git kubectl nvm"
 
 # bash-it plugins
 $SHELL -i -c "bash-it enable plugins gitstatus git-subrepo pyenv"

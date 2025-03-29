@@ -7,3 +7,6 @@
 [submodule "vim-code-dark"]
 	path = vim-code-dark
 	url = https://github.com/tomasiser/vim-code-dark
+[submodule "nvm"]
+	path = nvm
+	url = git@github.com:nvm-sh/nvm.git
