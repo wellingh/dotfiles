@@ -2,10 +2,11 @@
 
 # Misc
 export EDITOR=vim
+export CODE="$(command -v code || command -v vim)"
 alias reload='source $HOME/.bash_profile'
 
-if [[ -f $HOME/.envs ]]; then
-  source "$HOME/.envs"
+if [[ -f $HOME/.secrets ]]; then
+  source "$HOME/.secrets"
 fi
 
 # Git aliases
@@ -26,4 +27,12 @@ alias root='cd $(git rev-parse --show-toplevel)'
 gt() {
   git fetch --tags -q
   git tag -l "${1}*" --sort=-creatordate | head -n1
+}
+
+_secrets() {
+  $CODE "$HOME/.secrets"
+}
+
+_misc() {
+  $CODE "$DOTFILES/misc.sh"
 }

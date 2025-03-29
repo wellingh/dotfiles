@@ -88,8 +88,8 @@ source "$DOTFILES/$OS_FAMILY.sh"
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
 
-# Misc aliases and functions
-source "$DOTFILES/hacking.sh"
+# Miscellaneous aliases and functions
+source "$DOTFILES/misc.sh"
 
 # Python uv
 if [[ -f "$HOME/.local/bin/env" ]]; then
